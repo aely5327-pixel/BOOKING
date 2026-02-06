@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烙角訂位須知</title>
+    <!-- 即使沒有網路也能顯示基本圖示 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --color-bg: #F3E5D8; /* 米色背景 */
+            --color-main: #8B5E3C; /* 焦糖色主色 */
+            --color-dark: #5C3D2E; /* 深咖啡文字 */
+            --color-light-brown: #E6D5C3; /* 淺咖啡分隔線 */
+            --color-alert: #D9534F; /* 警告紅 */
+            --color-white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif, "Microsoft JhengHei", "微軟正黑體";
+            background-color: var(--color-bg);
+            color: #374151;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-white);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(92, 61, 46, 0.15);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--color-main);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 26px;
+            letter-spacing: 2px;
+        }
+        .header p {
+            margin: 0;
+            color: var(--color-bg);
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .content { padding: 30px; }
+
+        /* Sections */
+        .section { margin-bottom: 30px; }
+        .section-title {
+            color: var(--color-main);
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid var(--color-light-brown);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* List Styles */
+        ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #4B5563;
+        }
+        li::before {
+            content: "•";
+            color: var(--color-main);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .highlight {
+            color: var(--color-alert);
+            font-weight: bold;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background-color: #FFF5F5;
+            border: 1px solid #FECACA;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            color: #991B1B;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Location Box */
+        .location-box {
+            background-color: #F8FAFC;
+            border: 1px dashed #94A3B8;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Copy Section */
+        .copy-section {
+            background-color: var(--color-bg);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--color-white);
+            outline: 2px dashed var(--color-main);
+            outline-offset: -8px;
+        }
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            resize: none;
+            background-color: #fff;
+            margin-top: 15px;
+            font-family: inherit;
+        }
+        .btn-copy {
+            background-color: var(--color-dark);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .btn-copy:hover {
+            background-color: var(--color-main);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 94, 60, 0.3);
+        }
+        .copy-msg {
+            color: #059669;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 40px;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 20px;
+        }
+        .footer a {
+            color: var(--color-main);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>CANELé du Quai 烙角</h1>
+            <p>詳細訂位須知 & 用餐規範</p>
+        </div>
+
+        <div class="content">
+
+            <!-- 重要提醒 -->
+            <div class="warning-box">
+                <i class="fa-solid fa-bell"></i> 溫馨提醒：本店為一人廚房，為了避免影響您的用餐心情，請務必詳閱以下規範，確認能接受再進行預訂。
+            </div>
+
+            <!-- 1. 營業與低消 -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fa-solid fa-clock"></i> 營業時間與低消
+                </div>
+                <ul>
+                    <li>營業時間：11:30～18:30 (最後點餐 17:30)。</li>
+                    <li>用餐時間：<span class="highlight">90分鐘</span> (依訂位時間開始計算，非入座時間)。</li>
+                    <li>低消規定：<span class="highlight">$250/人</span> (不合併計算)。</li>
+                    <li>付款方式：<span class="highlight">僅供現金交易</span>。</li>
+                    <li>逾時訂位：座位僅保留10分鐘，逾時將自動取消。</li>
+                </ul>
+            </div>
+
+            <!-- 2. 交通與停車 (重點) -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fa-solid fa-car"></i> 交通與停車規範
+                </div>
+                <div class="location-box">
+                    <ul>
+                        <li class="highlight">本店無提供停車場，且位於死巷不易迴轉。</li>
+                        <li>請務必將車輛停於 <span class="highlight">124縣道</span> 主幹道上，再步行進入巷弄。</li>
+                        <li>導航建議直接搜尋地標「烙角可麗露廚房」，勿輸入地址以免迷路。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. 餐點預訂與過敏原 -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fa-solid fa-utensils"></i> 餐點預訂須知
+                </div>
+                <ul>
+                    <li>一人廚房作業，建議<span class="highlight">於用餐前完成點餐</span>避免久候。</li>
+                    <li>每日餐點、甜點售完不補，建議提早預訂。</li>
+                    <li>預訂之餐點將提前備料，<span class="highlight">不得取消或更改</span>。</li>
+                    <li>餐點僅能調整辣度，無法接受其他客製化調整。</li>
+                    <li><span class="highlight">過敏原提示</span>：甜點產品皆含蛋、乳製品、麩質穀物(麵粉)，部分含酒精，過敏者請避免食用，如有其過敏原請於訂位時告知。</li>
+                    <li>外帶甜點：請務必自備「保冷袋+保冷劑」確保新鮮。</li>
+                </ul>
+            </div>
+
+            <!-- 4. 人數、環境與寵物 -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fa-solid fa-leaf"></i> 環境、人數與寵物
+                </div>
+                <ul>
+                    <li><span class="highlight">不接受四位以上團體訂位</span>，亦不接受拆組訂位。</li>
+                    <li>寵物友善：因為開放式廚房毛孩進入室內請務必放入提籃或推車(不落地)。</li>
+                    <li>戶外座位：僅有小雨遮及自然風，位處大自然環境，請自行斟酌舒適度並攜帶防蚊用品。</li>
+                    <li>店內規範：<span class="highlight">禁止商業拍攝</span>；請勿任意移動店內擺設，如有毀損照價賠償。</li>
+                </ul>
+            </div>
+
+            <!-- 複製區塊 -->
+            <div class="copy-section">
+                <div style="font-weight: bold; color: var(--color-dark); margin-bottom: 10px;">
+                    我已詳閱並同意上述規範
+                </div>
+                <div style="font-size: 13px; color: #666; margin-bottom: 10px;">
+                    請複製下方格式，填寫後回傳官方Line@ / Facebook / Instagram 烙角可麗露廚房
+                </div>
+                
+                <textarea id="bookingForm" readonly>
+訂位日期/時間：
+人數：
+訂位大名：
+聯絡電話：
+是否確實詳閱訂位須知並能遵守：
+備註：（如須室外位置/須兒童座椅)
+
+*請注意：所有預留/訂購/訂位，皆需收到烙角回覆才算成功。
+                </textarea>
+                
+                <button onclick="copyForm()" class="btn-copy">
+                    <i class="fa-regular fa-copy"></i> 一鍵複製訂位資訊
+                </button>
+                <p id="copyMsg" class="copy-msg">已複製！請貼上回傳官方Line@ / Facebook / Instagram烙角可麗露廚房。</p>
+            </div>
+
+            <div class="footer">
+                <p>📍 苗栗縣南庄鄉福南41號 (百合山莊民宿旁)</p>
+                <a href="https://reurl.cc/NyR6kn" target="_blank">
+                    <i class="fa-solid fa-map-location-dot"></i> 點此開啟 Google Map 導航
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function copyForm() {
+            const copyText = document.getElementById("bookingForm");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(copyText.value);
+            } else {
+                document.execCommand("copy");
+            }
+
+            const msg = document.getElementById("copyMsg");
+            msg.style.display = "block";
+            setTimeout(() => {
+                msg.style.display = "none";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
